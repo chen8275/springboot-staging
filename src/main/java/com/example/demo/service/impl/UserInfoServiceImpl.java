@@ -7,6 +7,7 @@
   */
  package com.example.demo.service.impl;
 
+ import com.example.demo.core.ret.ServiceException;
  import com.example.demo.dao.UserInfoMapper;
  import com.example.demo.model.UserInfo;
  import com.example.demo.service.UserInfoService;
@@ -24,6 +25,11 @@
      UserInfoMapper userInfoMapper;
      
      public UserInfo selectById(Integer id){
-         return userInfoMapper.selectByPrimaryKey(id);
+         
+         UserInfo userInfo = userInfoMapper.selectByPrimaryKey(id);
+         if (userInfo==null){
+             throw new ServiceException("暂无该用户");
+         }
+         return userInfo;
      }
  }
