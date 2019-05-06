@@ -8,6 +8,7 @@
  package com.example.demo.service.impl;
 
  import com.example.demo.core.ret.ServiceException;
+ import com.example.demo.core.universal.AbstractService;
  import com.example.demo.dao.UserInfoMapper;
  import com.example.demo.model.UserInfo;
  import com.example.demo.service.UserInfoService;
@@ -23,7 +24,7 @@
   * @since 2019/5/6 10:05
   */
  @Service
- public class UserInfoServiceImpl implements UserInfoService {
+ public class UserInfoServiceImpl extends AbstractService<UserInfo> implements UserInfoService {
      
      @Autowired
      UserInfoMapper userInfoMapper;
@@ -37,14 +38,5 @@
          return userInfo;
      }
     
-     @Override
-     public PageInfo<UserInfo> selectAll(Integer page, Integer size) {
-         //开启分页查询，写在查询语句上方
-         //只有紧跟在PageHelper.startPage()方法后的第一个Mybatis的查询（Select）方法会被分页。
-         PageHelper.startPage(page, size);
-         List<UserInfo> userInfoList = userInfoMapper.selectAll();
-         PageInfo<UserInfo> pageInfo = new PageInfo<>(userInfoList);
-         return pageInfo;
-     }
      
  }

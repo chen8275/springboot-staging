@@ -8,6 +8,7 @@
  package com.example.demo.service;
 
 
+ import com.example.demo.core.universal.Service;
  import com.example.demo.model.UserInfo;
  import com.github.pagehelper.PageInfo;
 
@@ -16,9 +17,7 @@
   * @since 2019/5/6 10:04
   */
 
- public interface UserInfoService {
+ public interface UserInfoService extends Service<UserInfo> {
      
-     UserInfo selectById(Integer id);
      
-     PageInfo<UserInfo> selectAll(Integer page, Integer size);
  }
