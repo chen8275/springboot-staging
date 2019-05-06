@@ -39,7 +39,7 @@
       * @param args
       */
      public static void main(String[] args) {
-         genCode("system_log","user_role","sys_role","sys_perm","role_perm");
+         genCode("sys_permission_init");
      }
     
      /**

@@ -8,15 +8,15 @@
  package com.example.demo.service;
 
  import com.example.demo.core.universal.Service;
- import com.example.demo.model.SystemLog;
+ import com.example.demo.model.SysPermissionInit;
 
  import java.util.List;
 
  /**
+  * @Description: SysPermissionInitService接口
   * @author chendesheng chendesheng@tuhu.cn
-  * @since 2019/5/6 17:15
+  * @since 2019/5/6 21:58
   */
- public interface SystemLogService extends Service<SystemLog> {
-    
-     Integer insertByBatch(List<SystemLog> list);
+ public interface SysPermissionInitService extends Service<SysPermissionInit> {
+     List<SysPermissionInit> selectAllOrderBySort();
  }

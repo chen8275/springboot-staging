@@ -38,6 +38,8 @@
      @Autowired
      private RolePermService rolePermService;
     
+     
+     
      /**
       * 告诉shiro如何根据获取到的用户信息中的密码和盐值来校验密码
       */
@@ -96,15 +98,6 @@
         
      }
     
-     public static void main(String[] args) {
-         String hashAlgorithmName = "MD5";
-         String credentials = "1234";
-         int hashIterations = 1024;
-         ByteSource credentialsSalt = ByteSource.Util.bytes("xiaoxiao");
-         System.out.println(credentialsSalt);
-         Object obj = new SimpleHash(hashAlgorithmName, credentials, credentialsSalt, hashIterations);
-         System.out.println(obj);
-         
-     }
+     
      
  }

@@ -7,16 +7,19 @@
   */
  package com.example.demo.service;
 
- import com.example.demo.core.universal.Service;
- import com.example.demo.model.SystemLog;
-
- import java.util.List;
+ import java.util.Map;
 
  /**
+  * shiro 动态更新权限
   * @author chendesheng chendesheng@tuhu.cn
-  * @since 2019/5/6 17:15
+  * @since 2019/5/6 22:27
   */
- public interface SystemLogService extends Service<SystemLog> {
+ public interface ShiroService {
+     
+     Map<String, String> loadFilterChainDefinitions();
     
-     Integer insertByBatch(List<SystemLog> list);
+     /**
+      * 动态修改权限
+      */
+     void updatePermission();
  }
