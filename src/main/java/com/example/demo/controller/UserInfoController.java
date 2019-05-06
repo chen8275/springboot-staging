@@ -11,11 +11,12 @@
  import com.example.demo.core.ret.RetResult;
  import com.example.demo.model.UserInfo;
  import com.example.demo.service.UserInfoService;
+ import io.swagger.annotations.Api;
+ import io.swagger.annotations.ApiImplicitParam;
+ import io.swagger.annotations.ApiImplicitParams;
+ import io.swagger.annotations.ApiOperation;
  import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
- import org.springframework.web.bind.annotation.RequestMapping;
- import org.springframework.web.bind.annotation.RestController;
+ import org.springframework.web.bind.annotation.*;
 
  import java.util.List;
 
@@ -25,6 +26,7 @@
   */
  @RestController
  @RequestMapping("userInfo")
+ @Api(tags = {"用户操作接口"}, description = "userInfoControler")
  public class UserInfoController {
      
      @Autowired
@@ -41,18 +43,15 @@
      }
      
      @PostMapping("/selectById2")
-     public RetResult<UserInfo> selectById2(Integer id){
+     @ApiOperation(value = "查询用户", notes = "根据用户ID查询用户")
+     @ApiImplicitParams({
+             @ApiImplicitParam(name = "id", value = "用户ID", required = true,
+                     dataType = "Integer", paramType = "query")
+     })
+     public RetResult<UserInfo> selectById2(@RequestParam Integer id){
          UserInfo userInfo = userInfoService.selectById(id);
          return RetResponse.makeOKRsp(userInfo);
      }
     
-     @PostMapping("/testException")
-     public RetResult<UserInfo> testException(Integer id){
-         List a = null;
-         a.size();
-         UserInfo userInfo = userInfoService.selectById(id);
-         return RetResponse.makeOKRsp(userInfo);
-     }
-     
      
  }
