@@ -9,6 +9,7 @@
 
  import com.example.demo.core.ret.RetResponse;
  import com.example.demo.core.ret.RetResult;
+ import com.example.demo.core.ret.ServiceException;
  import com.example.demo.model.UserInfo;
  import com.example.demo.service.UserInfoService;
  import com.github.pagehelper.PageHelper;
@@ -17,6 +18,10 @@
  import io.swagger.annotations.ApiImplicitParam;
  import io.swagger.annotations.ApiImplicitParams;
  import io.swagger.annotations.ApiOperation;
+ import org.apache.shiro.SecurityUtils;
+ import org.apache.shiro.authc.IncorrectCredentialsException;
+ import org.apache.shiro.authc.UsernamePasswordToken;
+ import org.apache.shiro.subject.Subject;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.cache.annotation.Cacheable;
  import org.springframework.web.bind.annotation.*;
@@ -75,5 +80,22 @@
          PageInfo<UserInfo> pageInfo = new PageInfo<>(userInfoList);
          return RetResponse.makeOKRsp(pageInfo);
      }
+     
+     
+     @PostMapping("/login")
+     public RetResult<UserInfo> login(String userName, String password) {
+         Subject currentUser = SecurityUtils.getSubject();
+         //登录
+         try {
+             currentUser.login(new UsernamePasswordToken(userName, password));
+         }catch (IncorrectCredentialsException i){
+             throw new ServiceException("密码输入错误");
+         }
+         //从session取出用户信息
+         UserInfo user = (UserInfo) currentUser.getPrincipal();
+         return RetResponse.makeOKRsp(user);
+     }
+     
+     
      
  }

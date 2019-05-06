@@ -5,11 +5,17 @@
   * use it only in accordance with the terms of the license agreement you entered
   * into with Tuhu.cn
   */
- package com.example.demo.core;
+ package com.example.demo.core.aop;
+
+ import java.lang.annotation.*;
 
  /**
   * @author chendesheng chendesheng@tuhu.cn
-  * @since 2019/5/6 10:06
+  * @since 2019/5/6 17:13
   */
- public class Hello {
+ @Target(ElementType.METHOD)
+ @Retention(RetentionPolicy.RUNTIME)
+ @Documented
+ public @interface AnnotationLog {
+     String remark() default "";
  }

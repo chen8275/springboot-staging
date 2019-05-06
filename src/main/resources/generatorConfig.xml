@@ -58,11 +58,22 @@
 
         <!-- 配置表的映射 -->
         
-        <table schema="test" tableName="student" domainObjectName="Student"
+        <table schema="test" tableName="user_role" domainObjectName="UserRole"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
-        
+        <table schema="test" tableName="sys_role" domainObjectName="SysRole"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <table schema="test" tableName="sys_perm" domainObjectName="SysPerm"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <table schema="test" tableName="role_perm" domainObjectName="RolePerm"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
         
     </context>
 </generatorConfiguration>
