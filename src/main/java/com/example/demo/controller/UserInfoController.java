@@ -18,6 +18,7 @@
  import io.swagger.annotations.ApiImplicitParams;
  import io.swagger.annotations.ApiOperation;
  import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.cache.annotation.Cacheable;
  import org.springframework.web.bind.annotation.*;
 
  import java.util.List;
@@ -45,6 +46,7 @@
                      dataType = "String", paramType = "query")
      })
      @PostMapping("/selectById")
+     @Cacheable(value = "user",key = "#id")
      public RetResult<UserInfo> selectById(@RequestParam String id) {
          UserInfo userInfo = userInfoService.selectById(id);
          return RetResponse.makeOKRsp(userInfo);

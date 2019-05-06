@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Table(name = "system_log")
 public class SystemLog {
+    @Id
     private String id;
 
     /**

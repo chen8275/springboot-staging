@@ -5,19 +5,11 @@
   * use it only in accordance with the terms of the license agreement you entered
   * into with Tuhu.cn
   */
- package com.example.demo.service;
-
-
- import com.example.demo.core.universal.Service;
- import com.example.demo.model.UserInfo;
- import com.github.pagehelper.PageInfo;
+ package resources.template;
 
  /**
   * @author chendesheng chendesheng@tuhu.cn
-  * @since 2019/5/6 10:04
+  * @since 2019/5/6 15:59
   */
-
- public interface UserInfoService extends Service<UserInfo> {
-    
-     public UserInfo selectById(Integer id);
+ public class Hello {
  }

@@ -58,7 +58,7 @@
 
         <!-- 配置表的映射 -->
         
-        <table schema="test" tableName="user_info" domainObjectName="UserInfo"
+        <table schema="test" tableName="student" domainObjectName="Student"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
