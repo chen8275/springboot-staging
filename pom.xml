@@ -105,6 +105,18 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.22</version>
         </dependency>
+        <!--代码生成器-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-generator</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
