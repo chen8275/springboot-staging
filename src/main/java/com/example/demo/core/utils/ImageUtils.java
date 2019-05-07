@@ -20,7 +20,7 @@
  import java.io.OutputStream;
 
  /**
-  * TODO:添加图片压缩处理功能
+  *
   * @author chendesheng chendesheng@tuhu.cn
   * @since 2019/5/7 11:09
   */
@@ -29,7 +29,7 @@
      
      public static void main(String[] args) {
          //使用给定的图片生成指定大小的图片
-         //generateFixedSizeImage();
+         generateFixedSizeImage();
         
          //对原图加水印,然后顺时针旋转90度,最后压缩为80%保存
          //generateRotationWatermark();
@@ -46,23 +46,6 @@
          //将指定目录下所有图片生成缩略图
          //generateDirectoryThumbnail();
     
-         try {
-             Thumbnails.of("原图文件的路径")
-                     //生成图片大小
-                     .size(100,100)
-                     //缩放比例   0-1之间
-                     .scale(1f)
-                     //图片质量   0-1之间   1最好
-                     .outputQuality(0.5f)
-                     //顺时针旋转度数
-                     .rotate(90)
-                     //水印  第一个参数：水印位置   第二个：水印所在路径  第三个：水印透明度
-                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("水印所在路径")),1f).toFile("压缩后文件的路径");
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-        
-    
         
      }
     
@@ -71,7 +54,7 @@
       */
      public static void generateFixedSizeImage(){
          try {
-             Thumbnails.of("C:\\Users\\Administrator\\Desktop\\微信图片_20180129100019.jpg").size(80,80).toFile("C:\\Users\\Administrator\\Desktop\\newmeinv.jpg");
+             Thumbnails.of("C:\\Users\\chendesheng\\Pictures\\Saved Pictures\\delu.png").size(80,80).toFile("C:\\Users\\chendesheng\\Pictures\\Camera Roll\\newdelu.jpg");
          } catch (IOException e) {
              log.error(e.getMessage());
          }
