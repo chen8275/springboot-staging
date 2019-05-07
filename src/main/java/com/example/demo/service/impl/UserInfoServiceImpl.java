@@ -16,7 +16,9 @@
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.cache.annotation.Cacheable;
  import org.springframework.stereotype.Service;
- 
+
+ import java.util.List;
+
 
  /**
   * @author chendesheng chendesheng@tuhu.cn
@@ -28,6 +30,10 @@
      
      @Autowired
      UserInfoMapper userInfoMapper;
+     @Override
+     public List<UserInfo> selectAlla(int pageNum, int pageSize) {
+         return userInfoMapper.selectAll(pageNum,pageSize);
+     }
     
      
      public UserInfo selectById(Integer id){

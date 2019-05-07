@@ -12,12 +12,14 @@
  import com.example.demo.model.UserInfo;
  import com.github.pagehelper.PageInfo;
 
+ import java.util.List;
+
  /**
   * @author chendesheng chendesheng@tuhu.cn
   * @since 2019/5/6 10:04
   */
 
  public interface UserInfoService extends Service<UserInfo> {
-    
-     public UserInfo selectById(Integer id);
+     
+     List<UserInfo> selectAlla(int pageNum, int pageSize);
  }

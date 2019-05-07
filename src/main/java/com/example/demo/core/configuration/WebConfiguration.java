@@ -11,6 +11,7 @@
  import com.alibaba.fastjson.serializer.SerializerFeature;
  import com.alibaba.fastjson.support.config.FastJsonConfig;
  import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
+ import com.example.demo.core.interceptor.Interceptor1;
  import com.example.demo.core.ret.RetCode;
  import com.example.demo.core.ret.RetResult;
  import com.example.demo.core.ret.ServiceException;
@@ -24,8 +25,10 @@
  import org.springframework.web.servlet.HandlerExceptionResolver;
  import org.springframework.web.servlet.ModelAndView;
  import org.springframework.web.servlet.NoHandlerFoundException;
+ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
  import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
  import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
  import javax.servlet.ServletException;
  import javax.servlet.http.HttpServletRequest;
@@ -49,6 +52,11 @@
  @Configuration
  @Slf4j
  public class WebConfiguration extends WebMvcConfigurationSupport {
+     /**
+      * TODO  修改为自己的需求
+      */
+     private static final String IZATION = "CHUCHEN";
+     
      /**
       * 修改自定义消息转换器
       * @param converters
@@ -155,7 +163,7 @@
          response.setHeader("Content-type", "application/json;charset=UTF-8");
          response.setStatus(200);
          try {
-             response.getWriter().write(JSON.toJSONString(result,SerializerFeature.WriteMapNullValue));
+             response.getWriter().write(JSON.toJSONString(result, SerializerFeature.WriteMapNullValue));
          } catch (IOException ex) {
              log.error(ex.getMessage());
          }
@@ -213,6 +221,38 @@
          });
      }
     
+    
+    
+    
+     
+     /**
+      * TODO:添加拦截器
+      * 添加拦截器  请求头拦截
+      */
+     @Override
+     public void addInterceptors(InterceptorRegistry registry) {
+         registry.addInterceptor(
+                 //注意，HandlerInterceptorAdapter  这里可以修改为自己创建的拦截器
+                 new Interceptor1() {
+                     @Override
+                     public boolean preHandle(HttpServletRequest request,
+                                              HttpServletResponse response, Object handler) throws Exception {
+                         String ization = request.getHeader("ization");
+                         if (IZATION.equals(ization)) {
+                             return true;
+                         } else {
+                             RetResult<Object> result = new RetResult<>();
+                             result.setCode(RetCode.UNAUTHORIZED).setMsg("签名认证失败");
+                             responseResult(response, result);
+                             return false;
+                         }
+                     }
+                 }
+                 //这里添加的是拦截的路径  /**为全部拦截
+         ).addPathPatterns("/userInfo/selectAlla");
+    
+    
+     }
      
      
  }
