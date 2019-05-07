@@ -17,7 +17,7 @@
 
   <select id="selectAllOrderBySort" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from sys_permission_init
         order by sort desc
   </select>

@@ -5,11 +5,21 @@
   * use it only in accordance with the terms of the license agreement you entered
   * into with Tuhu.cn
   */
- package resources;
+ package com.example.demo.core.constant;
 
  /**
   * @author chendesheng chendesheng@tuhu.cn
-  * @since 2019/5/6 15:59
+  * @since 2019/5/7 9:39
   */
- public class Hello {
+ public class MailConstant {
+     /**
+      * 注册的模板名称
+      */
+     public static final String RETGISTEREMPLATE = "register";
+    
+     /**
+      * 模板存放的路径
+      */
+     public static final String TEMPLATEPATH = "src/test/java/resources/template/mail";
+     
  }

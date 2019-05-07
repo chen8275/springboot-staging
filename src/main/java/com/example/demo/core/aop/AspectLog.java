@@ -54,7 +54,7 @@
      @Before("methodCachePointcut()")
      public void doBefore(JoinPoint p) throws Exception{
          SystemLog systemLog = getSystemLogInit(p);
-         systemLog.setLogType(SystemLog.LOGINFO);
+         systemLog.setLogType("LOGINFO");
          systemLogService.insert(systemLog);
      }
     
@@ -69,7 +69,7 @@
          if(!(e instanceof ServiceException)) {
              try {
                  SystemLog systemLog =getSystemLogInit(p);
-                 systemLog.setLogType(SystemLog.LOGERROR);
+                 systemLog.setLogType("LOGERROR");
                  systemLog.setExceptionCode(e.getClass().getName());
                  systemLog.setExceptionDetail(e.getMessage());
                  systemLogService.insert(systemLog);

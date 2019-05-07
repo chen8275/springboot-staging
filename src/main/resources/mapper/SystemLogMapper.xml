@@ -17,13 +17,13 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
 
-    <insert id="insertByBatch" parameterType="java.util.List" >
+    <insert id="insertByBatch" parameterType="java.util.List">
         insert into system_log (
         id, description, method, log_type, request_ip, exception_code,
         exception_detail, params, user_id, create_time
         )
         values
-        <foreach collection="list" item="item" index= "index" separator =",">
+        <foreach collection="list" index="index" item="item" separator=",">
             (
             #{item.id,jdbcType=VARCHAR},
             #{item.description,jdbcType=VARCHAR},
