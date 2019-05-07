@@ -8,9 +8,11 @@
  package com.example.demo.core.configuration;
 
  import com.example.demo.core.shiro.CustomRealm;
+ import com.example.demo.core.shiro.MySessionManager;
  import com.example.demo.model.SysPermissionInit;
  import com.example.demo.service.SysPermissionInitService;
  import org.apache.shiro.realm.Realm;
+ import org.apache.shiro.session.mgt.SessionManager;
  import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
  import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
  import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
@@ -36,7 +38,12 @@
      public Realm realm() {
          return new CustomRealm();
      }
-    
+     
+     @Bean
+     public SessionManager sessionManager(){
+         return new MySessionManager();
+     }
+     
      @Bean
      public static DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator() {
          DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
@@ -63,6 +70,8 @@
          }
          return chain;
      }
-  
+    
+     
+     
      
  }
